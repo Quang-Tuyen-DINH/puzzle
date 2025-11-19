@@ -1,16 +1,56 @@
-# React + Vite
+<p><strong>Interactive drag‑and‑drop mini puzzle built with React, Vite, Konva & GSAP.</strong></p>
+<p>Match the French themed symbols (baguettes, croissant, vin) to their silhouettes.</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+- Drag & drop matching of three symbols to target outlines (snap when close).
+- Visual feedback on hover and cursor changes.
+- Fireworks celebration once all matches succeed.
+- Efficient particle pooling (max 150) + GSAP ticker driven redraw for performance.
+- Clean TypeScript components and scoped SCSS styles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- Build tooling: Vite + TypeScript
+- UI: React 18
+- Canvas / 2D scene graph: Konva & react-konva
+- Animation: GSAP
+- Drag behavior: Konva built‑in draggable nodes
+- Styling: SCSS modules
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Structure (key files)
 
-## Expanding the ESLint configuration
+```
+root/
+├─ src/
+│  ├─ main.tsx                 # App bootstrap
+│  ├─ App.tsx                  # Root component / routes mounting
+│  ├─ components/
+│  │  ├─ Puzzle.tsx            # Core puzzle logic + scoring
+│  │  ├─ Fireworks.tsx         # Fireworks animation system (GSAP + Konva)
+│  │  └─ Paragraph.tsx         # Animated heading text splitter
+│  ├─ assets/puzzle/           # Images (symbols, outlines, background)
+│  └─ styles/components/*.scss # Component styles
+├─ vite.config.ts              # Vite configuration
+├─ tsconfig.json               # TypeScript config
+└─ README.md                   # You are here
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How It Works (Puzzle Mechanics)
+
+1. Each symbol (`baguettes`, `croissant`, `vin`) starts at an initial coordinate.
+2. Matching silhouette (dark image) is rendered beneath; draggable colored symbol is rendered on top layer.
+3. On drag end, proximity check (`±22px`) determines a snap to the target position and locks the piece (disables dragging).
+4. Score increments; when score reaches total pieces, success state renders fireworks + congratulatory paragraph.
+
+## Running Locally
+
+```bash
+git clone <repo-url>
+cd puzzle
+npm install
+npm run dev
+# Open http://localhost:3000
+```
+
+No environment variables are required.
