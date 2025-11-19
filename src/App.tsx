@@ -6,6 +6,8 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Navigate to="/puzzle" replace />} />
+        <Route path="/puzzle" element={<Puzzle />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,11 @@
+.puzzle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.puzzle-canvas-wrapper {
+  overflow: hidden;
+  border-radius: 50px;
+}
