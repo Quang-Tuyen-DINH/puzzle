@@ -59,7 +59,7 @@ const Symbol = ({ name, startX, startY, outline, onScore }: SymbolProps) => {
   const [pos, setPos] = useState<Position>({ x: startX, y: startY });
   const [isDraggable, setIsDraggable] = useState(true);
   const [inRightPlace, setInRightPlace] = useState(false);
-  
+
   const [image] = useImage(imageMap[name]);
   const [outlineImage] = useImage(outlineMap[name]);
 
@@ -80,7 +80,7 @@ const Symbol = ({ name, startX, startY, outline, onScore }: SymbolProps) => {
   const handleDragEnd = (e: any) => {
     const newPos: Position = { x: e.target.x(), y: e.target.y() };
     setPos(newPos);
-    
+
     if (!inRightPlace && isNearOutline(newPos, outline)) {
       setPos({ x: outline.x, y: outline.y });
       setInRightPlace(true);
@@ -144,10 +144,10 @@ interface SymbolMatchProps {
 const SymbolMatch = ({ name, x, y }: SymbolMatchProps) => {
   const [image] = useImage(darkMap[name]);
   return image ? (
-    <Image 
-      image={image} 
-      x={x} 
-      y={y} 
+    <Image
+      image={image}
+      x={x}
+      y={y}
       scaleX={0.3}
       scaleY={0.3}
     />
@@ -171,7 +171,7 @@ interface SymbolsConfig {
 
 const Puzzle = () => {
   const [score, setScore] = useState(0);
-  
+
   const symbols: SymbolsConfig = {
     baguettes: { x: 850, y: 70, outline: { x: 120, y: 150 } },
     croissant: { x: 990, y: 70, outline: { x: 390, y: 250 } },
