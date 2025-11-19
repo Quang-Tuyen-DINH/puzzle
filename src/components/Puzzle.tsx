@@ -20,6 +20,7 @@ import vinOutline from '../assets/puzzle/vin-outline.png';
 import vinDark from '../assets/puzzle/vin-dark.png';
 
 import parisBackground from '../assets/puzzle/paris-background.jpg';
+import Fireworks from './Fireworks';
 
 const imageMap: Record<string, string> = {
   baguettes: baguettesImg,
@@ -176,7 +177,7 @@ const Puzzle = () => {
     baguettes: { x: 850, y: 70, outline: { x: 120, y: 150 } },
     croissant: { x: 990, y: 70, outline: { x: 390, y: 250 } },
     eiffel: { x: 275, y: 270, outline: { x: 790, y: 220 } },
-    vin: { x: 480, y: 30, outline: { x: 1080, y: 190 } }
+    vin: { x: 510, y: 30, outline: { x: 1080, y: 190 } }
   };
 
   const handleScore = () => {
@@ -185,6 +186,11 @@ const Puzzle = () => {
 
   return (
     <div className="puzzle-container">
+      <div className="puzzle-fireworks-wrapper">
+        {score >= 4 &&
+          <Fireworks />
+        }
+      </div>
       <div className="puzzle-canvas-wrapper">
         <Stage width={1200} height={530}>
           <Layer>
