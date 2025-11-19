@@ -18,6 +18,7 @@ import vinDark from '../assets/puzzle/vin-dark.png';
 import parisBackground from '../assets/puzzle/paris-background.jpg';
 import Fireworks from './Fireworks';
 import Paragraph from './Paragraph';
+import ScrollDemo from '../examples/ScrollDemo';
 
 const imageMap: Record<string, string> = {
   baguettes: baguettesImg,
@@ -186,6 +187,7 @@ const Puzzle = () => {
           <Fireworks />
         }
       </div>
+      <div><ScrollDemo /></div>
       <div className="puzzle-header-paragraph-wrapper">
         <Paragraph text={success ? 'Congratulations! You made it.' : 'Hi anh Hai! Feel free to complete the puzzle.'} />
       </div>
