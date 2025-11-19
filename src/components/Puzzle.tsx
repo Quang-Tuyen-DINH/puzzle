@@ -11,35 +11,29 @@ import croissantImg from '../assets/puzzle/croissant.png';
 import croissantOutline from '../assets/puzzle/croissant-outline.png';
 import croissantDark from '../assets/puzzle/croissant-dark.png';
 
-import eiffelImg from '../assets/puzzle/eiffel.png';
-import eiffelOutline from '../assets/puzzle/eiffel-outline.png';
-import eiffelDark from '../assets/puzzle/eiffel-dark.png';
-
 import vinImg from '../assets/puzzle/vin.png';
 import vinOutline from '../assets/puzzle/vin-outline.png';
 import vinDark from '../assets/puzzle/vin-dark.png';
 
 import parisBackground from '../assets/puzzle/paris-background.jpg';
 import Fireworks from './Fireworks';
+import Paragraph from './Paragraph';
 
 const imageMap: Record<string, string> = {
   baguettes: baguettesImg,
   croissant: croissantImg,
-  eiffel: eiffelImg,
   vin: vinImg,
 };
 
 const outlineMap: Record<string, string> = {
   baguettes: baguettesOutline,
   croissant: croissantOutline,
-  eiffel: eiffelOutline,
   vin: vinOutline,
 };
 
 const darkMap: Record<string, string> = {
   baguettes: baguettesDark,
   croissant: croissantDark,
-  eiffel: eiffelDark,
   vin: vinDark,
 };
 
@@ -176,7 +170,6 @@ const Puzzle = () => {
   const symbols: SymbolsConfig = {
     baguettes: { x: 850, y: 70, outline: { x: 120, y: 150 } },
     croissant: { x: 990, y: 70, outline: { x: 390, y: 250 } },
-    eiffel: { x: 275, y: 270, outline: { x: 790, y: 220 } },
     vin: { x: 510, y: 30, outline: { x: 1080, y: 190 } }
   };
 
@@ -184,27 +177,22 @@ const Puzzle = () => {
     setScore(s => s + 1);
   };
 
+  const success = score >= 3;
+
   return (
     <div className="puzzle-container">
       <div className="puzzle-fireworks-wrapper">
-        {score >= 4 &&
+        {success &&
           <Fireworks />
         }
+      </div>
+      <div className="puzzle-header-paragraph-wrapper">
+        <Paragraph text={success ? 'Congratulations! You made it.' : 'Hi anh Hai! Feel free to complete the puzzle.'} />
       </div>
       <div className="puzzle-canvas-wrapper">
         <Stage width={1200} height={530}>
           <Layer>
             <Background />
-            <Text
-              text={score >= 4 ? 'Congratulations! You made it.' : 'Hi anh Hai! Feel free to complete the puzzle.'}
-              x={578 / 2}
-              y={40}
-              fontSize={20}
-              fontFamily="Calibri"
-              fill="white"
-              align="center"
-              offsetX={200}
-            />
           </Layer>
           <Layer>
             {Object.entries(symbols).map(([name, pos]) => (

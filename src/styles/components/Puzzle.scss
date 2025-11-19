@@ -1,10 +1,13 @@
 .puzzle-container {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
+
+.puzzle-header-paragraph-wrapper {}
 
 .puzzle-fireworks-wrapper {
   position: fixed;
