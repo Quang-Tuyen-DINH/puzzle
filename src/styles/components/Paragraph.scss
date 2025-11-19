@@ -1,0 +1,60 @@
+.paragraph-container {
+  --paragraph-color: #ececec;
+  --paragraph-font: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --paragraph-btn-fg: #0e100f;
+  --paragraph-btn-bg: transparent;
+  --paragraph-btn-border: #0e100f;
+  --paragraph-btn-hover-bg: #0e100f;
+  --paragraph-btn-hover-fg: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.container {
+  max-width: 80vw;
+}
+
+.split {
+  opacity: 0;
+  text-align: center;
+  color: var(--paragraph-color);
+  font-family: var(--paragraph-font);
+  font-size: 3rem;
+  letter-spacing: 0.05rem;
+  will-change: transform;
+}
+
+.split * {
+  will-change: transform;
+}
+
+.word {
+  display: inline-flex;
+}
+
+.space {
+  white-space: pre;
+}
+
+.char-mask {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.char {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split {
+    opacity: 1;
+  }
+
+  .char {
+    transform: none !important;
+  }
+}
