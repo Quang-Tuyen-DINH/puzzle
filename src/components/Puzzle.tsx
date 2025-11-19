@@ -11,34 +11,29 @@ import croissantImg from '../assets/puzzle/croissant.png';
 import croissantOutline from '../assets/puzzle/croissant-outline.png';
 import croissantDark from '../assets/puzzle/croissant-dark.png';
 
-import eiffelImg from '../assets/puzzle/eiffel.png';
-import eiffelOutline from '../assets/puzzle/eiffel-outline.png';
-import eiffelDark from '../assets/puzzle/eiffel-dark.png';
-
 import vinImg from '../assets/puzzle/vin.png';
 import vinOutline from '../assets/puzzle/vin-outline.png';
 import vinDark from '../assets/puzzle/vin-dark.png';
 
 import parisBackground from '../assets/puzzle/paris-background.jpg';
+import Fireworks from './Fireworks';
+import Paragraph from './Paragraph';
 
 const imageMap: Record<string, string> = {
   baguettes: baguettesImg,
   croissant: croissantImg,
-  eiffel: eiffelImg,
   vin: vinImg,
 };
 
 const outlineMap: Record<string, string> = {
   baguettes: baguettesOutline,
   croissant: croissantOutline,
-  eiffel: eiffelOutline,
   vin: vinOutline,
 };
 
 const darkMap: Record<string, string> = {
   baguettes: baguettesDark,
   croissant: croissantDark,
-  eiffel: eiffelDark,
   vin: vinDark,
 };
 
@@ -59,7 +54,7 @@ const Symbol = ({ name, startX, startY, outline, onScore }: SymbolProps) => {
   const [pos, setPos] = useState<Position>({ x: startX, y: startY });
   const [isDraggable, setIsDraggable] = useState(true);
   const [inRightPlace, setInRightPlace] = useState(false);
-  
+
   const [image] = useImage(imageMap[name]);
   const [outlineImage] = useImage(outlineMap[name]);
 
@@ -80,7 +75,7 @@ const Symbol = ({ name, startX, startY, outline, onScore }: SymbolProps) => {
   const handleDragEnd = (e: any) => {
     const newPos: Position = { x: e.target.x(), y: e.target.y() };
     setPos(newPos);
-    
+
     if (!inRightPlace && isNearOutline(newPos, outline)) {
       setPos({ x: outline.x, y: outline.y });
       setInRightPlace(true);
@@ -144,10 +139,10 @@ interface SymbolMatchProps {
 const SymbolMatch = ({ name, x, y }: SymbolMatchProps) => {
   const [image] = useImage(darkMap[name]);
   return image ? (
-    <Image 
-      image={image} 
-      x={x} 
-      y={y} 
+    <Image
+      image={image}
+      x={x}
+      y={y}
       scaleX={0.3}
       scaleY={0.3}
     />
@@ -171,34 +166,33 @@ interface SymbolsConfig {
 
 const Puzzle = () => {
   const [score, setScore] = useState(0);
-  
+
   const symbols: SymbolsConfig = {
     baguettes: { x: 850, y: 70, outline: { x: 120, y: 150 } },
     croissant: { x: 990, y: 70, outline: { x: 390, y: 250 } },
-    eiffel: { x: 275, y: 270, outline: { x: 790, y: 220 } },
-    vin: { x: 480, y: 30, outline: { x: 1080, y: 190 } }
+    vin: { x: 510, y: 30, outline: { x: 1080, y: 190 } }
   };
 
   const handleScore = () => {
     setScore(s => s + 1);
   };
 
+  const success = score >= 3;
+
   return (
     <div className="puzzle-container">
+      <div className="puzzle-fireworks-wrapper">
+        {success &&
+          <Fireworks />
+        }
+      </div>
+      <div className="puzzle-header-paragraph-wrapper">
+        <Paragraph text={success ? 'Congratulations! You made it.' : 'Hi anh Hai! Feel free to complete the puzzle.'} />
+      </div>
       <div className="puzzle-canvas-wrapper">
         <Stage width={1200} height={530}>
           <Layer>
             <Background />
-            <Text
-              text={score >= 4 ? 'Congratulations! You made it.' : 'Hi anh Hai! Feel free to complete the puzzle.'}
-              x={578 / 2}
-              y={40}
-              fontSize={20}
-              fontFamily="Calibri"
-              fill="white"
-              align="center"
-              offsetX={200}
-            />
           </Layer>
           <Layer>
             {Object.entries(symbols).map(([name, pos]) => (
