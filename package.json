@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.13.0",
     "konva": "^10.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -17,6 +19,7 @@
     "react-konva-utils": "^2.0.0",
     "react-router-dom": "^7.9.6",
     "react-scripts": "^5.0.1",
+    "react-transition-group": "^4.4.5",
     "use-image": "^1.1.4"
   },
   "devDependencies": {
@@ -24,6 +27,7 @@
     "@types/node": "^24.10.1",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
+    "@types/react-transition-group": "^4.4.12",
     "@vitejs/plugin-react": "^5.1.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
