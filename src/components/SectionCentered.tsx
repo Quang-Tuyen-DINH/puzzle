@@ -59,4 +59,4 @@ const SectionCentered = ({
   );
 };
 
-export default SectionCentered;
+export default React.memo(SectionCentered);

@@ -4,9 +4,11 @@ import Paragraph from '../components/Paragraph';
 import ParagraphFillLine from '../components/ParagraphFillLine';
 import ParagraphEaseIn from '../components/ParagraphEaseIn';
 import SectionCentered from '../components/SectionCentered';
+import CardsHover from '../components/CardsHover';
+import { useMemo } from "react";
 
 function SlideShow() {
-  const sections = [
+  const sections = useMemo(() => ([
     {
       key: "slide-show-header",
       content: (
@@ -35,19 +37,35 @@ function SlideShow() {
     {
       key: "slide-show-exp",
       content: (
-        <div className="scroll-text">
-          <Paragraph text="At Inbolt, we give robots AI vision" />
-          <ParagraphFillLine
-            texts={[
-              "I built the studio using WebGL, Canvas, and React",
-              "Accelerated performance with GPU-optimized meshes",
-              "Enhanced UX with a responsive design system",
-              "Worked with PM on user flows and QA on E2E testing",
-              "My work contributed to the team’s success - we raised €15M ",
-            ]}
-            textAlign='left'
-            startColor="#448bff"
-          />
+        <div className="slide-show-exp">
+          <div className="slide-show-exp__inbolt">
+            <Paragraph text="At Inbolt, we give robots AI vision" />
+            <div className="slide-show-exp__inbolt__demo">
+              <iframe
+                className="slide-show-exp__inbolt__iframe"
+                src="https://www.youtube.com/embed/TdDXTyDm-a0?si=Fb9ne_UTqb3eXsV8"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+          <div className="slide-show-exp__my-exp">
+            <Paragraph text="As for me" />
+            <ParagraphFillLine
+              texts={[
+                "- Built the studio's frontend using WebGL, Canvas, and React",
+                "- Accelerated performance with GPU-optimized meshes",
+                "- Handled engineering, product, and design responsibilities across the frontend from 2023 to 2024",
+                "- Enhanced UX with a responsive design system",
+                "- Worked with PM on user flows and QA on E2E testing",
+                "- My work contributed to the team’s success - we raised €15M ",
+              ]}
+              textAlign='left'
+              startColor="#448bff"
+            />
+          </div>
         </div>
       ),
     },
@@ -76,6 +94,22 @@ function SlideShow() {
       ),
     },
     {
+      key: "slide-show-cards",
+      content: (
+        <div className="scroll-text">
+          <CardsHover
+            cards={[
+              { label: 'Design', color: '#ef5b5b' },
+              { label: 'Frontend', color: '#448bff' },
+              { label: 'Performance', color: '#21c997' },
+              { label: 'UX', color: '#ff8c42' },
+              { label: 'Teamwork', color: '#8b5cff' },
+            ]}
+          />
+        </div>
+      ),
+    },
+    {
       key: "slide-show-footer",
       content: (
         <div className="scroll-footer">
@@ -83,7 +117,7 @@ function SlideShow() {
         </div>
       ),
     },
-  ];
+  ]), []);
   
   return (
     <main className="slide-show-container">

@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
 import '../styles/components/ParagraphEaseIn.scss';
+import React from 'react';
 
 interface ParagraphEaseInProps {
   texts: string[];
@@ -77,4 +78,4 @@ const ParagraphEaseIn = ({
   );
 };
 
-export default ParagraphEaseIn;
+export default React.memo(ParagraphEaseIn);

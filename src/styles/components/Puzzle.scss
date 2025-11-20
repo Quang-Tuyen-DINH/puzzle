@@ -7,7 +7,12 @@
   min-height: 100vh;
 }
 
-.puzzle-header-paragraph-wrapper {}
+.puzzle-header-paragraph-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .puzzle-fireworks-wrapper {
   position: fixed;
@@ -20,6 +25,12 @@
 }
 
 .puzzle-canvas-wrapper {
+  min-height: 550px;
+  min-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
   overflow: hidden;
   border-radius: 50px;

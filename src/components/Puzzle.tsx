@@ -187,7 +187,7 @@ const Puzzle = () => {
         }
       </div>
       <div className="puzzle-header-paragraph-wrapper">
-        <Paragraph text={success ? 'Well done! You made it' : 'Feel free to complete the puzzle'} />
+        <Paragraph text={success ? 'Well done! You made it.' : 'Feel free to complete the puzzle.'} />
       </div>
       <div className="puzzle-canvas-wrapper">
         <Stage width={1200} height={530}>

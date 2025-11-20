@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplitType from 'split-type';
 import '../styles/components/ParagraphFillLine.scss';
+import React from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,39 +39,36 @@ const ParagraphFillLine = ({
   const paragraphRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
   useEffect(() => {
-    const splits: SplitType[] = [];
-    const tls: gsap.core.Timeline[] = [];
+      const tls: gsap.core.Timeline[] = [];
 
-    paragraphRefs.current.forEach((ref) => {
-      if (!ref) return;
-      const split = new SplitType(ref, {
-        types: 'words,chars',
-      });
-      splits.push(split);
+      // Animate a single CSS custom property (--fill) per paragraph using background-clip:text.
+      // This avoids animating many character elements and drastically reduces paint work.
+      paragraphRefs.current.forEach((ref) => {
+        if (!ref) return;
 
-      // compute a start point slightly earlier than center. By default startOffsetPercent=1
-      // which yields start: 'top 49%'. Keep the end as bottom center.
-      const startPercent = Math.max(0, Math.min(75, 75 - startOffsetPercent));
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ref,
-          start: `top ${startPercent}%`,
-          end: 'bottom center',
-          scrub: scrubSpeed,
-        },
-      });
-      tl.to(split.chars, {
-        color: endColor ?? 'var(--paragraph-color)',
-        stagger: stagger,
-      });
-      tls.push(tl);
-    });
+        const startPercent = Math.max(0, Math.min(50, 50 - startOffsetPercent));
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ref,
+            start: `top ${startPercent}%`,
+            end: 'bottom center',
+            scrub: scrubSpeed,
+          },
+        });
 
-    return () => {
-      tls.forEach((t) => t && t.kill());
-      splits.forEach((s) => s && s.revert());
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+        // animate the CSS variable that controls the gradient stop
+        // cast to any because React.CSSProperties doesn't include custom properties
+        tl.to(ref as any, {
+          css: { '--fill': '100%' },
+          ease: 'none',
+        });
+        tls.push(tl);
+      });
+
+      return () => {
+        tls.forEach((t) => t && t.kill());
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
   }, [texts, endColor, scrubSpeed, stagger, startOffsetPercent]);
 
   return (
@@ -85,12 +82,14 @@ const ParagraphFillLine = ({
           key={idx}
           ref={el => paragraphRefs.current[idx] = el}
           className="paragraph-fill-line"
-          style={{
-            color: startColor ?? 'var(--paragraph-color)',
-            fontSize: fontSize,
-            textAlign: textAlign,
-            margin: 0,
-          }}
+          style={({
+              fontSize: fontSize,
+              textAlign: textAlign,
+              margin: 0,
+              // expose start/end colors as CSS vars so the background-clip gradient can use them
+              ['--startColor' as any]: startColor,
+              ['--endColor' as any]: endColor,
+            } as unknown) as React.CSSProperties}
         >
           {text}
         </p>
@@ -99,4 +98,4 @@ const ParagraphFillLine = ({
   );
 };
 
-export default ParagraphFillLine;
+export default React.memo(ParagraphFillLine);
