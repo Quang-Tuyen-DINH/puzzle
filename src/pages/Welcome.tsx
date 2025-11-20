@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Paragraph from '../components/Paragraph'
 import "../styles/pages/Welcome.scss"
-import ButtonExample from '../examples/ButtonExample'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-dom'
 
 function Welcome() {
   const navigate = useNavigate();
+  const content = useMemo(() => ([
+    {
+      text: "Hi anh Hai!",
+      key: "content-1"
+    },
+    {
+      text: "Nice to meet you",
+      key: "content-2"
+    },
+  ]), [])
 
   return (
     <div className="welcome-container">
-      <Paragraph text="Hi anh Hai!" />
-      <Paragraph text="Nice to meet you." />
+      {content.map((c) => (
+        <Paragraph key={c.key} text={c.text} />
+      ))}
       <Button
         className='welcome-container__button-continue'
         label='Continue'
-        onClick={() => navigate("/puzzle")}
+        onClick={() => navigate("/slide")}
       />
     </div>
   )

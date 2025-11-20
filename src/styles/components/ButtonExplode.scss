@@ -1,0 +1,44 @@
+.btn-explode {
+  position: relative;
+  display: inline-block;
+  background-color: var(--color-just-black, #000);
+  border: solid 2px var(--color-surface-white, #fff);
+  border-radius: 99px;
+  padding: 0.4rem 3.5rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+  overflow: visible;
+  z-index: 1;
+  isolation: isolate;
+
+  &:hover:not(&--disabled) {
+    text-decoration: none;
+    border: solid 2px var(--color-surface-white, #fff);
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__svg {
+    position: absolute;
+    width: 500%;
+    height: 500%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    overflow: visible;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,17 @@
+.paragraph-fill-line {
+  font-family: var(--paragraph-font, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
+  
+  padding: 1%;
+  font-weight: 500;
+  line-height: 1.4;
+  
+  // SplitType generates these classes
+  .word {
+    display: inline-block;
+    margin-right: 0.25em;
+  }
+
+  .char {
+    display: inline-block;
+  }
+}

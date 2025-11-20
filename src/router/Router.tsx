@@ -1,16 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Puzzle from '../components/Puzzle';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Welcome from '../pages/Welcome';
-import ButtonExample from '../examples/ButtonExample';
+import SlideShow from '../pages/SlideShow';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/" element={<Navigate to="/welcome" replace />} />
         <Route path="/welcome" element={<Welcome />} />
-        <Route path="/puzzle" element={<Puzzle />} />
-        <Route path="/button" element={<ButtonExample />} />
+        <Route path="/slide" element={<SlideShow />} />
       </Routes>
     </BrowserRouter>
   );
