@@ -25,7 +25,7 @@ const ParagraphFillLine = ({
   texts,
   startColor = '#989898',
   endColor = "#ECECEC",
-  fontSize = 'clamp(1rem, 6rem, 2.5vw)',
+  fontSize = 'clamp(0.7rem, 4.2rem, 1.75vw)',
   scrubSpeed = 0.1,
   stagger = 1,
   className = '',
@@ -41,7 +41,7 @@ const ParagraphFillLine = ({
     paragraphRefs.current.forEach((ref) => {
       if (!ref) return;
       const split = new SplitType(ref, {
-        types: 'lines,words,chars',
+        types: 'words,chars',
       });
       splits.push(split);
 

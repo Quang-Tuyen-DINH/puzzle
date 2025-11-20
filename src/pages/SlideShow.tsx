@@ -43,7 +43,7 @@ function SlideShow() {
               "Accelerated performance with GPU-optimized meshes",
               "Enhanced UX with a responsive design system",
               "Worked with PM on user flows and QA on E2E testing",
-              " My work contributed to the team’s success - driving a €15M raise",
+              "My work contributed to the team’s success - driving a €15M raise",
             ]}
             textAlign='left'
           />
