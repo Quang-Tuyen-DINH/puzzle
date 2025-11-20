@@ -29,8 +29,7 @@ const ParagraphFillLine = ({
   endColor = "#ECECEC",
   fontSize = 'clamp(0.5rem, 3.5rem, 1.4vw)',
   scrubSpeed = 0.1,
-  // default to 0.1 so the fill starts ~0.1% earlier than center (subtle shift)
-  startOffsetPercent = 0.1,
+  startOffsetPercent = 6,
   stagger = 1,
   className = '',
   textAlign = 'left',
@@ -41,12 +40,10 @@ const ParagraphFillLine = ({
   useEffect(() => {
       const tls: gsap.core.Timeline[] = [];
 
-      // Animate a single CSS custom property (--fill) per paragraph using background-clip:text.
-      // This avoids animating many character elements and drastically reduces paint work.
       paragraphRefs.current.forEach((ref) => {
         if (!ref) return;
 
-        const startPercent = Math.max(0, Math.min(50, 50 - startOffsetPercent));
+        const startPercent = Math.max(0, Math.min(90, 90 - startOffsetPercent));
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ref,
@@ -56,8 +53,6 @@ const ParagraphFillLine = ({
           },
         });
 
-        // animate the CSS variable that controls the gradient stop
-        // cast to any because React.CSSProperties doesn't include custom properties
         tl.to(ref as any, {
           css: { '--fill': '100%' },
           ease: 'none',
@@ -86,7 +81,6 @@ const ParagraphFillLine = ({
               fontSize: fontSize,
               textAlign: textAlign,
               margin: 0,
-              // expose start/end colors as CSS vars so the background-clip gradient can use them
               ['--startColor' as any]: startColor,
               ['--endColor' as any]: endColor,
             } as unknown) as React.CSSProperties}

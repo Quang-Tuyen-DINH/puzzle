@@ -21,9 +21,9 @@ const CardsHover: React.FC<Props> = ({ cards, className = '' }) => {
     <div className={`cards-hover ${className}`.trim()}>
       {cards.map((c, idx) => {
         const style: React.CSSProperties = {
-          ['--card-float-duration' as any]: `${rand(4, 8)}s`,
+          ['--card-float-duration' as any]: `${rand(3, 6)}s`,
           ['--card-float-delay' as any]: `${rand(-2, 2)}s`,
-          ['--card-rotate' as any]: `${rand(-6, 6)}deg`,
+          ['--card-rotate' as any]: `${rand(-8, 8)}deg`,
           ['--card-bg' as any]: c.color,
         };
 

@@ -52,13 +52,13 @@ function SlideShow() {
             </div>
           </div>
           <div className="slide-show-exp__my-exp">
-            <Paragraph text="As for me" />
+            <Paragraph text="As Frontend Engineer" />
             <ParagraphFillLine
               texts={[
                 "- Built the studio's frontend using WebGL, Canvas, and React",
                 "- Accelerated performance with GPU-optimized meshes",
                 "- Handled engineering, product, and design responsibilities across the frontend from 2023 to 2024",
-                "- Enhanced UX with a responsive design system",
+                "- Enhanced UX/UI with a responsive design system",
                 "- Worked with PM on user flows and QA on E2E testing",
                 "- My work contributed to the team’s success - we raised €15M ",
               ]}
@@ -74,13 +74,12 @@ function SlideShow() {
       content: (
         <div className="scroll-text">
           <Paragraph text="I aim to bring at Obello" />
-          <ParagraphEaseIn
-            texts={[
-              "Result-driven mindset",
-              "Team-first collaboration",
-              "Focus on quality",
+          <CardsHover
+            cards={[
+              { label: 'Result-driven mindset', color: '#0052D4' },
+              { label: 'Team-first collaboration', color: '#6FB1FC' },
+              { label: 'Focus on quality', color: '#21c997' },
             ]}
-            textAlign='center'
           />
         </div>
       ),
@@ -90,22 +89,6 @@ function SlideShow() {
       content: (
         <div className="scroll-text">
           <Paragraph text="I can start working in December" />
-        </div>
-      ),
-    },
-    {
-      key: "slide-show-cards",
-      content: (
-        <div className="scroll-text">
-          <CardsHover
-            cards={[
-              { label: 'Design', color: '#ef5b5b' },
-              { label: 'Frontend', color: '#448bff' },
-              { label: 'Performance', color: '#21c997' },
-              { label: 'UX', color: '#ff8c42' },
-              { label: 'Teamwork', color: '#8b5cff' },
-            ]}
-          />
         </div>
       ),
     },
