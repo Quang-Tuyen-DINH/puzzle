@@ -1,0 +1,14 @@
+.welcome-container {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0052D4 0%, #6FB1FC 100%);
+
+  &__button-continue {
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,64 @@
+.scroll-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-wrapper {
+  overflow-x: hidden;
+}
+
+.scroll-section {
+  position: relative;
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    will-change: transform;
+  }
+}
+
+// Gallery styles for list items
+.scroll-gallery {
+  ul {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+  }
+
+  li {
+    flex-shrink: 0;
+    width: clamp(500px, 60vw, 800px);
+    padding-right: 1rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      background: #f0f0f0;
+      display: block;
+    }
+  }
+}
+
+// Text section styles
+.scroll-text {
+  .text {
+  }
+}
+
+// Header/Footer styles
+.scroll-header,
+.scroll-footer {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

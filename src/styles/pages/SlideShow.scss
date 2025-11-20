@@ -1,0 +1,62 @@
+.slide-show-container {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0052D4 0%, #6FB1FC 100%);
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__lazy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.slide-show-header {
+}
+
+.slide-show-exp {
+  display: flex;
+
+  &__inbolt {
+    width: 50%;
+
+    &__demo {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+      border-radius: 12px;
+
+      .slide-show-exp__inbolt__iframe {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        border: 0;
+        /* keep aspect and avoid overflow */
+        max-width: 100%;
+        max-height: 100%;
+        /* ensure iframe corners follow the container radius */
+        border-radius: inherit;
+      }
+    }
+  }
+
+  &__my-exp {
+    width: 50%;
+  }
+}

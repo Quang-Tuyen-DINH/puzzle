@@ -1,0 +1,19 @@
+.paragraph-fill-line {
+  font-family: var(--paragraph-font, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
+  
+  padding: 1%;
+  font-weight: 500;
+  line-height: 1.4;
+  
+  // Use background-clip text with a CSS variable '--fill' controlling the gradient stop.
+  // This keeps the paragraph as a single element and avoids per-character repaints.
+  --startColor: var(--paragraph-start-color, #989898);
+  --endColor: var(--paragraph-end-color, #ECECEC);
+  --fill: 0%;
+
+  color: transparent;
+  background: linear-gradient(90deg, var(--endColor) 0%, var(--endColor) var(--fill), var(--startColor) var(--fill), var(--startColor) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  will-change: background-position, background;
+}

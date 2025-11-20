@@ -151,7 +151,7 @@ const SymbolMatch = ({ name, x, y }: SymbolMatchProps) => {
 
 const Background = () => {
   const [image] = useImage(parisBackground);
-  return image ? <Image image={image} width={1280} height={720} /> : null;
+  return image ? <Image image={image} width={960} height={640} /> : null;
 };
 
 interface SymbolData {
@@ -168,9 +168,9 @@ const Puzzle = () => {
   const [score, setScore] = useState(0);
 
   const symbols: SymbolsConfig = {
-    baguettes: { x: 850, y: 70, outline: { x: 120, y: 150 } },
-    croissant: { x: 990, y: 70, outline: { x: 390, y: 250 } },
-    vin: { x: 510, y: 30, outline: { x: 1080, y: 190 } }
+    baguettes: { x: 650, y: 70, outline: { x: 90, y: 180 } },
+    croissant: { x: 560, y: 180, outline: { x: 590, y: 380 } },
+    vin: { x: 310, y: 30, outline: { x: 50, y: 390 } }
   };
 
   const handleScore = () => {
@@ -187,10 +187,10 @@ const Puzzle = () => {
         }
       </div>
       <div className="puzzle-header-paragraph-wrapper">
-        <Paragraph text={success ? 'Congratulations! You made it.' : 'Hi anh Hai! Feel free to complete the puzzle.'} />
+        <Paragraph text={success ? 'Well done! You made it.' : 'Feel free to complete the puzzle.'} />
       </div>
       <div className="puzzle-canvas-wrapper">
-        <Stage width={1200} height={530}>
+        <Stage width={960} height={640}>
           <Layer>
             <Background />
           </Layer>

@@ -64,4 +64,4 @@ function Paragraph({ text, color }: ParagraphProps) {
   )
 }
 
-export default Paragraph
+export default React.memo(Paragraph)
