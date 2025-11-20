@@ -3,7 +3,7 @@ import Puzzle from '../components/Puzzle';
 import Paragraph from '../components/Paragraph';
 import ParagraphFillLine from '../components/ParagraphFillLine';
 import ParagraphEaseIn from '../components/ParagraphEaseIn';
-import LazyLoad from 'react-lazy-load';
+import SectionCentered from '../components/SectionCentered';
 
 function SlideShow() {
   const sections = [
@@ -91,9 +91,9 @@ function SlideShow() {
       </header>
       {sections.map((section) => (
         <section className="slide-show-container__section" key={section.key}>
-          <LazyLoad className="slide-show-container__section__lazy" height={"100vh"} offset={200}>
-              {section.content}
-          </LazyLoad>
+          <SectionCentered className="slide-show-container__section__lazy" minHeight="100vh" activateOnce={false}>
+            {section.content}
+          </SectionCentered>
         </section>
       ))}
     </main>
