@@ -17,7 +17,7 @@ const ParagraphEaseIn = ({
   textColor,
   textAlign = 'left',
   disableAutoPlay = false,
-  fontSize = 'clamp(0.7rem, 4.2rem, 1.75vw)',
+  fontSize = 'clamp(0.5rem, 3.5rem, 1.4vw)',
 }: ParagraphEaseInProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const paragraphRefs = useRef<(HTMLDivElement | null)[]>([]);

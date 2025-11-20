@@ -23,7 +23,7 @@
   text-align: center;
   color: var(--paragraph-color);
   font-family: var(--paragraph-font);
-  font-size: 3rem;
+  font-size: clamp(1rem, 6rem, 2.6vw);
   letter-spacing: 0.05rem;
   will-change: transform;
 }

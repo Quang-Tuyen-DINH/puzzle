@@ -25,7 +25,7 @@ const ParagraphFillLine = ({
   texts,
   startColor = '#989898',
   endColor = "#ECECEC",
-  fontSize = 'clamp(0.7rem, 4.2rem, 1.75vw)',
+  fontSize = 'clamp(0.5rem, 3.5rem, 1.4vw)',
   scrubSpeed = 0.1,
   stagger = 1,
   className = '',

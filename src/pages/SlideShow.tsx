@@ -46,6 +46,7 @@ function SlideShow() {
               "My work contributed to the team’s success - driving a €15M raise",
             ]}
             textAlign='left'
+            startColor="#448bff"
           />
         </div>
       ),
@@ -90,7 +91,7 @@ function SlideShow() {
       </header>
       {sections.map((section) => (
         <section className="slide-show-container__section" key={section.key}>
-          <LazyLoad className="slide-show-container__section__lazy" height={"100vh"} offset={400}>
+          <LazyLoad className="slide-show-container__section__lazy" height={"100vh"} offset={200}>
               {section.content}
           </LazyLoad>
         </section>
