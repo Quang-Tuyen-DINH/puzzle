@@ -28,7 +28,7 @@ function SlideShow() {
       content: (
         <div className="scroll-text">
           <Paragraph text="We share the same passion" />
-          <Paragraph text="Solving problems and crafting creative products" />
+          <Paragraph text="Solving problems and crafting creative products" color="#ff0"/>
         </div>
       ),
     },
