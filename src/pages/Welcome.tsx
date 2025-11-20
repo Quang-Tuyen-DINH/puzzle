@@ -12,7 +12,7 @@ function Welcome() {
       key: "content-1"
     },
     {
-      text: "Nice to meet you",
+      text: "I am Quang Tuyen. Glad to meet you",
       key: "content-2"
     },
   ]), [])

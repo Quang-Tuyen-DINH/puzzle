@@ -15,6 +15,8 @@ interface ParagraphFillLineProps {
   endColor?: string;
   fontSize?: string;
   scrubSpeed?: number;
+  /** percent (0-50) to shift the start trigger earlier. For example 1 means start at 49% instead of 50%. */
+  startOffsetPercent?: number;
   stagger?: number;
   className?: string;
   textAlign?: 'left' | 'center' | 'right' | 'justify';
@@ -27,6 +29,8 @@ const ParagraphFillLine = ({
   endColor = "#ECECEC",
   fontSize = 'clamp(0.5rem, 3.5rem, 1.4vw)',
   scrubSpeed = 0.1,
+  // default to 0.1 so the fill starts ~0.1% earlier than center (subtle shift)
+  startOffsetPercent = 0.1,
   stagger = 1,
   className = '',
   textAlign = 'left',
@@ -45,10 +49,13 @@ const ParagraphFillLine = ({
       });
       splits.push(split);
 
+      // compute a start point slightly earlier than center. By default startOffsetPercent=1
+      // which yields start: 'top 49%'. Keep the end as bottom center.
+      const startPercent = Math.max(0, Math.min(75, 75 - startOffsetPercent));
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ref,
-          start: 'top center',
+          start: `top ${startPercent}%`,
           end: 'bottom center',
           scrub: scrubSpeed,
         },
@@ -65,7 +72,7 @@ const ParagraphFillLine = ({
       splits.forEach((s) => s && s.revert());
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [texts, endColor, scrubSpeed, stagger]);
+  }, [texts, endColor, scrubSpeed, stagger, startOffsetPercent]);
 
   return (
     <div
